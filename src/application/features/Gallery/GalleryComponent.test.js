@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import GalleryComponent from './GalleryComponent';
 import setPromiseState from '../../shared/utilities/promiseState';
-import LoaderComponent from '../Loader/LoaderComponent';
+import LoaderComponent from '../Loader/Loader';
 
 describe('<GalleryComponent />', () => {
   const getGalleryMock = jest.fn();

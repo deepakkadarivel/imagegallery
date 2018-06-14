@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import LoaderComponent from '../Loader/LoaderComponent';
+import Loader from '../Loader/Loader';
 import './gallery.css';
 
 class GalleryComponent extends Component {
@@ -26,7 +26,7 @@ class GalleryComponent extends Component {
   render() {
     return (
       <div className="GalleryComponent">
-        {this.props.gallery.promise.getGallery.isPending && <LoaderComponent />}
+        {this.props.gallery.promise.getGallery.isPending && <Loader />}
       </div>
     );
   }
