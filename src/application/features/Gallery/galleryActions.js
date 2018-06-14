@@ -20,10 +20,10 @@ const galleryRejected = () => {
   };
 };
 
-const setGalleryData = gallery => {
+const setGalleryData = posts => {
   return {
     type: galleryActionTypes.SET_GALLERY,
-    gallery
+    posts
   };
 };
 
@@ -36,8 +36,8 @@ const getGallery = () => {
       .get(galleryUrl)
       .then(response => {
         dispatch(galleryFulfilled());
-        let gallery = response.data ? response.data : [];
-        dispatch(setGalleryData(gallery));
+        let posts = response.data ? response.data.data : [];
+        dispatch(setGalleryData(posts));
       })
       .catch(() => {
         dispatch(galleryRejected());
@@ -45,4 +45,4 @@ const getGallery = () => {
   };
 };
 
-export default getGallery;
+export { getGallery };

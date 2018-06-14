@@ -7,7 +7,7 @@ const apiSettings = {
     gallery: {
       gallery: '/gallery',
       generateGalleryUrl() {
-        return `${baseUrl}/${this.gallery}`;
+        return `${baseUrl}${this.gallery}`;
       }
     }
   }

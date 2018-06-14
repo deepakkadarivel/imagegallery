@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import galleryActionTypes from './galleryActionTypes';
 import galleryInitialState from './galleryInitialState';
-import getGallery from './galleryActions';
+import { getGallery } from './galleryActions';
 import axios from 'axios';
 import apiSettings from '../../shared/settings/apiSettings';
 
@@ -47,11 +47,11 @@ describe('getGallery', () => {
       },
       {
         type: galleryActionTypes.SET_GALLERY,
-        gallery: mockGalleryData.data
+        posts: mockGalleryData.data
       }
     ];
     spyOn(axios, 'get').and.returnValue(
-      Promise.resolve({ data: mockGalleryData.data })
+      Promise.resolve({ data: mockGalleryData })
     );
     store.dispatch(getGallery()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
