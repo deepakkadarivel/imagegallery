@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import LoaderComponent from '../Loader/LoaderComponent';
+import './gallery.css';
 
 class GalleryComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: this.props.gallery.posts,
-      getGalleryPromise: this.props.gallery.promise.getGallery
+      posts: this.props.gallery.posts
     };
   }
 
@@ -14,8 +15,20 @@ class GalleryComponent extends Component {
     this.props.getGallery();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.gallery !== this.props.gallery) {
+      this.setState({
+        posts: nextProps.gallery.posts
+      });
+    }
+  }
+
   render() {
-    return <div className="GalleryComponent" />;
+    return (
+      <div className="GalleryComponent">
+        {this.props.gallery.promise.getGallery.isPending && <LoaderComponent />}
+      </div>
+    );
   }
 }
 
