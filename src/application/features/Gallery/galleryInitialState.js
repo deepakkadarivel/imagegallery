@@ -3,6 +3,7 @@ import setPromiseState from '../../shared/utilities/promiseState';
 
 const galleryInitialState = seamlessImmutable({
   thumbnails: [],
+  selectedThumbnail: {},
   promise: {
     getGallery: setPromiseState()
   }

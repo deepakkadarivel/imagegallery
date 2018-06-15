@@ -30,6 +30,10 @@ describe('<GalleryContainer />', () => {
       type: galleryActionTypes.SET_GALLERY,
       thumbnails: [{ id: 'post1' }, { id: 'post2' }]
     });
+    spyOn(galleryActions, 'setSelectedThumbnail').and.returnValue({
+      type: galleryActionTypes.SET_SELECTED_THUMBNAIL,
+      thumbnail: { id: 'post1' }
+    });
 
     GalleryComponent.mockImplementation(() => {
       return {
@@ -67,6 +71,15 @@ describe('<GalleryContainer />', () => {
       expect(store.dispatch).toHaveBeenCalledWith({
         type: galleryActionTypes.SET_GALLERY,
         thumbnails: [{ id: 'post1' }, { id: 'post2' }]
+      });
+    });
+
+    it('calls setSelectedThumbnail action', () => {
+      let thumbnail = { id: 'post1' };
+      componentProps.setSelectedThumbnail(thumbnail);
+      expect(store.dispatch).toHaveBeenCalledWith({
+        type: galleryActionTypes.SET_SELECTED_THUMBNAIL,
+        thumbnail
       });
     });
   });

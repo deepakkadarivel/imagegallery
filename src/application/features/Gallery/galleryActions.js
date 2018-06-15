@@ -27,6 +27,13 @@ const setGalleryData = thumbnails => {
   };
 };
 
+const setSelectedThumbnail = thumbnail => {
+  return {
+    type: galleryActionTypes.SET_SELECTED_THUMBNAIL,
+    thumbnail
+  };
+};
+
 const getGallery = () => {
   return (dispatch, getState) => {
     const galleryUrl = apiSettings.endpoints.gallery.generateGalleryUrl();
@@ -45,4 +52,4 @@ const getGallery = () => {
   };
 };
 
-export { getGallery };
+export { getGallery, setSelectedThumbnail };

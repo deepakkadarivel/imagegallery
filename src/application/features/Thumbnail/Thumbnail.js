@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './thumbnail.css';
+import { Link } from 'react-router-dom';
 
 const Thumbnail = props => {
   const { imageUrl, title, onClick } = props;
 
   return (
     <div className="thumbnail" onClick={onClick}>
-      <img src={imageUrl} alt={title} />
+      <Link to="/detail">
+        <img src={imageUrl} alt={title} />
+      </Link>
       <div className="container">
         <p>{title}</p>
       </div>

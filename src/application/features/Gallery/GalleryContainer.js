@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import GalleryComponent from './GalleryComponent';
-import { getGallery } from './galleryActions';
+import { getGallery, setSelectedThumbnail } from './galleryActions';
 
 const mapStateToProps = state => {
   return {
@@ -12,6 +12,9 @@ const mapDispatchToProps = dispatch => {
   return {
     getGallery() {
       dispatch(getGallery());
+    },
+    setSelectedThumbnail() {
+      dispatch(setSelectedThumbnail());
     }
   };
 };

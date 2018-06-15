@@ -34,6 +34,10 @@ class GalleryComponent extends Component {
     );
   }
 
+  setSelectedThumbnail(thumbnail) {
+    this.props.setSelectedThumbnail(thumbnail);
+  }
+
   renderGallery() {
     return this.state.thumbnails.map(thumbnail => {
       if (GalleryComponent.isImage(thumbnail.type)) {
@@ -42,6 +46,7 @@ class GalleryComponent extends Component {
             key={thumbnail.id}
             imageUrl={thumbnail.link}
             title={thumbnail.title}
+            onClick={() => this.setSelectedThumbnail(thumbnail)}
           />
         );
       } else if (thumbnail.images) {
@@ -52,6 +57,7 @@ class GalleryComponent extends Component {
                 key={thumb.id}
                 imageUrl={thumb.link}
                 title={thumbnail.title}
+                onClick={() => this.setSelectedThumbnail(thumbnail)}
               />
             );
           }
@@ -86,7 +92,8 @@ class GalleryComponent extends Component {
 
 GalleryComponent.propTypes = {
   gallery: PropTypes.object,
-  getGallery: PropTypes.func
+  getGallery: PropTypes.func,
+  setSelectedThumbnail: PropTypes.func
 };
 
 export default GalleryComponent;

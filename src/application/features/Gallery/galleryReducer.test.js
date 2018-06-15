@@ -9,7 +9,8 @@ describe('galleryReducer', () => {
     thumbnails: [],
     promise: {
       getGallery: setPromiseState()
-    }
+    },
+    selectedThumbnail: {}
   });
 
   it('should return the initial state', () => {
@@ -21,7 +22,8 @@ describe('galleryReducer', () => {
       thumbnails: [],
       promise: {
         getGallery: setPromiseState(true, false, false)
-      }
+      },
+      selectedThumbnail: {}
     };
 
     expect(
@@ -36,7 +38,8 @@ describe('galleryReducer', () => {
       thumbnails: [],
       promise: {
         getGallery: setPromiseState(false, true, false)
-      }
+      },
+      selectedThumbnail: {}
     };
 
     expect(
@@ -58,7 +61,8 @@ describe('galleryReducer', () => {
       thumbnails,
       promise: {
         getGallery: setPromiseState()
-      }
+      },
+      selectedThumbnail: {}
     };
 
     expect(
@@ -74,7 +78,8 @@ describe('galleryReducer', () => {
       thumbnails: [],
       promise: {
         getGallery: setPromiseState(false, false, true)
-      }
+      },
+      selectedThumbnail: {}
     };
 
     expect(

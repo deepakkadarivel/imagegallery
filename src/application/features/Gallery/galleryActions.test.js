@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import galleryActionTypes from './galleryActionTypes';
 import galleryInitialState from './galleryInitialState';
-import { getGallery } from './galleryActions';
+import { getGallery, setSelectedThumbnail } from './galleryActions';
 import axios from 'axios';
 import apiSettings from '../../shared/settings/apiSettings';
 
@@ -76,5 +76,17 @@ describe('getGallery', () => {
       expect(store.getActions()).toEqual(expectedActions);
       done();
     });
+  });
+
+  it('set selected thumbnail', () => {
+    let thumbnail = { id: '1', link: 'sample link' };
+    const expectedActions = [
+      {
+        type: galleryActionTypes.SET_SELECTED_THUMBNAIL,
+        thumbnail
+      }
+    ];
+    store.dispatch(setSelectedThumbnail(thumbnail));
+    expect(store.getActions()).toEqual(expectedActions);
   });
 });

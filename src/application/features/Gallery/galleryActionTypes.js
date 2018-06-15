@@ -4,7 +4,8 @@ const galleryActionTypes = {
     fulfilled: 'gallery/GET_GALLERY/fulfilled',
     rejected: 'gallery/GET_GALLERY/rejected'
   },
-  SET_GALLERY: 'gallery/SET_GALLERY'
+  SET_GALLERY: 'gallery/SET_GALLERY',
+  SET_SELECTED_THUMBNAIL: 'gallery/SET_SELECTED_THUMBNAIL'
 };
 
 export default galleryActionTypes;
