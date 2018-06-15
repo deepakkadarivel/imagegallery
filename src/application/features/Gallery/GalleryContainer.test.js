@@ -14,7 +14,7 @@ import setPromiseState from '../../shared/utilities/promiseState';
 describe('<GalleryContainer />', () => {
   const state = {
     gallery: {
-      posts: [],
+      thumbnails: [],
       promise: {
         getGallery: setPromiseState()
       }
@@ -28,7 +28,7 @@ describe('<GalleryContainer />', () => {
     spyOn(store, 'dispatch');
     spyOn(galleryActions, 'getGallery').and.returnValue({
       type: galleryActionTypes.SET_GALLERY,
-      posts: [{ id: 'post1' }, { id: 'post2' }]
+      thumbnails: [{ id: 'post1' }, { id: 'post2' }]
     });
 
     GalleryComponent.mockImplementation(() => {
@@ -56,7 +56,7 @@ describe('<GalleryContainer />', () => {
   });
 
   describe('mapStateToProps', () => {
-    it('sets the posts prop', () => {
+    it('sets the thumbnails prop', () => {
       expect(componentProps.gallery).toEqual(state.gallery);
     });
   });
@@ -66,7 +66,7 @@ describe('<GalleryContainer />', () => {
       componentProps.getGallery();
       expect(store.dispatch).toHaveBeenCalledWith({
         type: galleryActionTypes.SET_GALLERY,
-        posts: [{ id: 'post1' }, { id: 'post2' }]
+        thumbnails: [{ id: 'post1' }, { id: 'post2' }]
       });
     });
   });

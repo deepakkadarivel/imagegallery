@@ -10,7 +10,7 @@ describe('<GalleryComponent />', () => {
 
   const props = {
     gallery: {
-      posts: [],
+      thumbnails: [],
       promise: {
         getGallery: setPromiseState()
       }
@@ -30,7 +30,7 @@ describe('<GalleryComponent />', () => {
       expect(loaderComponent.length).toBe(0);
       component.setProps({
         gallery: {
-          posts: [],
+          thumbnails: [],
           promise: {
             getGallery: setPromiseState(true, false, false)
           }

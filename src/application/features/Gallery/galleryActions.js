@@ -20,10 +20,10 @@ const galleryRejected = () => {
   };
 };
 
-const setGalleryData = posts => {
+const setGalleryData = thumbnails => {
   return {
     type: galleryActionTypes.SET_GALLERY,
-    posts
+    thumbnails: thumbnails
   };
 };
 
@@ -36,8 +36,8 @@ const getGallery = () => {
       .get(galleryUrl)
       .then(response => {
         dispatch(galleryFulfilled());
-        let posts = response.data ? response.data.data : [];
-        dispatch(setGalleryData(posts));
+        let thumbnails = response.data ? response.data.data : [];
+        dispatch(setGalleryData(thumbnails));
       })
       .catch(() => {
         dispatch(galleryRejected());

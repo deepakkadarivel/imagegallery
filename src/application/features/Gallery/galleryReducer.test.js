@@ -6,7 +6,7 @@ import setPromiseState from '../../shared/utilities/promiseState';
 
 describe('galleryReducer', () => {
   const initialState = seamlessImmutable({
-    posts: [],
+    thumbnails: [],
     promise: {
       getGallery: setPromiseState()
     }
@@ -18,7 +18,7 @@ describe('galleryReducer', () => {
 
   it(`should handle ${galleryActionTypes.GET_GALLERY.pending}`, () => {
     const expectedState = {
-      posts: [],
+      thumbnails: [],
       promise: {
         getGallery: setPromiseState(true, false, false)
       }
@@ -33,7 +33,7 @@ describe('galleryReducer', () => {
 
   it(`should handle ${galleryActionTypes.GET_GALLERY.fulfilled}`, () => {
     const expectedState = {
-      posts: [],
+      thumbnails: [],
       promise: {
         getGallery: setPromiseState(false, true, false)
       }
@@ -47,7 +47,7 @@ describe('galleryReducer', () => {
   });
 
   it(`should handle ${galleryActionTypes.SET_GALLERY}`, () => {
-    const posts = [
+    const thumbnails = [
       {
         id: 11,
         imageUri: '#',
@@ -55,7 +55,7 @@ describe('galleryReducer', () => {
       }
     ];
     const expectedState = {
-      posts,
+      thumbnails,
       promise: {
         getGallery: setPromiseState()
       }
@@ -64,14 +64,14 @@ describe('galleryReducer', () => {
     expect(
       galleryReducer(initialState, {
         type: galleryActionTypes.SET_GALLERY,
-        posts
+        thumbnails: thumbnails
       })
     ).toEqual(expectedState);
   });
 
   it(`should handle ${galleryActionTypes.GET_GALLERY.rejected}`, () => {
     const expectedState = {
-      posts: [],
+      thumbnails: [],
       promise: {
         getGallery: setPromiseState(false, false, true)
       }

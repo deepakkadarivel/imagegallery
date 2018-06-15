@@ -23,7 +23,7 @@ const galleryReducer = (state = galleryInitialState, action) => {
       );
 
     case galleryActionTypes.SET_GALLERY:
-      return state.setIn(['posts'], action.posts);
+      return state.setIn(['thumbnails'], action.thumbnails);
 
     default:
       return state;

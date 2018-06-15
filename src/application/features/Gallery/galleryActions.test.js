@@ -47,7 +47,7 @@ describe('getGallery', () => {
       },
       {
         type: galleryActionTypes.SET_GALLERY,
-        posts: mockGalleryData.data
+        thumbnails: mockGalleryData.data
       }
     ];
     spyOn(axios, 'get').and.returnValue(

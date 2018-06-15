@@ -7,7 +7,7 @@ class GalleryComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: this.props.gallery.posts
+      thumbnails: this.props.gallery.thumbnails
     };
   }
 
@@ -18,7 +18,7 @@ class GalleryComponent extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.gallery !== this.props.gallery) {
       this.setState({
-        posts: nextProps.gallery.posts
+        thumbnails: nextProps.gallery.thumbnails
       });
     }
   }
