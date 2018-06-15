@@ -42,6 +42,7 @@
     "enzyme": "^3.3.0",
     "jest": "^23.1.0",
     "jest-cli": "^23.1.0",
+    "react-masonry-css": "^1.0.11",
     "redux-devtools": "^3.4.1",
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.1"

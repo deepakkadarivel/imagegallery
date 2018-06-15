@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './thumbnail.css';
 
 const Thumbnail = props => {
-  const { imageUrl, title, description, onClick } = props;
+  const { imageUrl, title, onClick } = props;
 
   return (
     <div className="thumbnail" onClick={onClick}>

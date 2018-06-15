@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Masonry from 'react-masonry-css';
 import Loader from '../Loader/Loader';
 import './gallery.css';
 import Thumbnail from '../Thumbnail/Thumbnail';
@@ -24,14 +25,18 @@ class GalleryComponent extends Component {
     }
   }
 
+  static isImage(type) {
+    return (
+      type === 'image/gif' ||
+      type === 'image/png' ||
+      type === 'image/jpeg' ||
+      type === 'image/jpg'
+    );
+  }
+
   renderGallery() {
     return this.state.thumbnails.map(thumbnail => {
-      if (
-        thumbnail.type === 'image/gif' ||
-        thumbnail.type === 'image/png' ||
-        thumbnail.type === 'image/jpeg' ||
-        thumbnail.type === 'image/jpg'
-      ) {
+      if (GalleryComponent.isImage(thumbnail.type)) {
         return (
           <Thumbnail
             key={thumbnail.id}
@@ -39,15 +44,9 @@ class GalleryComponent extends Component {
             title={thumbnail.title}
           />
         );
-      }
-      if (thumbnail.images) {
+      } else if (thumbnail.images) {
         return thumbnail.images.map(thumb => {
-          if (
-            thumb.type === 'image/gif' ||
-            thumb.type === 'image/png' ||
-            thumb.type === 'image/jpeg' ||
-            thumb.type === 'image/jpg'
-          ) {
+          if (GalleryComponent.isImage(thumb.type)) {
             return (
               <Thumbnail
                 key={thumb.id}
@@ -56,16 +55,30 @@ class GalleryComponent extends Component {
               />
             );
           }
+          return null;
         });
       }
+      return null;
     });
   }
 
   render() {
+    const breakpointColumnsObj = {
+      default: 5,
+      1100: 4,
+      700: 2,
+      500: 1
+    };
     return (
       <div className="GalleryComponent">
         {this.props.gallery.promise.getGallery.isPending && <Loader />}
-        <div className="gallery">{this.renderGallery()}</div>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {this.renderGallery()}
+        </Masonry>
       </div>
     );
   }
