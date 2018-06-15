@@ -82,5 +82,14 @@ describe('<GalleryContainer />', () => {
         thumbnail
       });
     });
+
+    it('calls setSelectedThumbnailImage action', () => {
+      let image = '#';
+      componentProps.setSelectedThumbnailImage(image);
+      expect(store.dispatch).toHaveBeenCalledWith({
+        type: galleryActionTypes.SET_SELECTED_THUMBNAIL_IMAGE,
+        image
+      });
+    });
   });
 });

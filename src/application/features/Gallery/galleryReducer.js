@@ -25,6 +25,12 @@ const galleryReducer = (state = galleryInitialState, action) => {
     case galleryActionTypes.SET_GALLERY:
       return state.setIn(['thumbnails'], action.thumbnails);
 
+    case galleryActionTypes.SET_SELECTED_THUMBNAIL:
+      return state.setIn(['selectedThumbnail'], action.thumbnail);
+
+    case galleryActionTypes.SET_SELECTED_THUMBNAIL_IMAGE:
+      return state.setIn(['selectedThumbnailImage'], action.image);
+
     default:
       return state;
   }

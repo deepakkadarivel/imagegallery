@@ -8,6 +8,7 @@ import LoaderComponent from '../Loader/Loader';
 describe('<GalleryComponent />', () => {
   const getGalleryMock = jest.fn();
   const setSelectedThumbnailMock = jest.fn();
+  const setSelectedThumbnailImageMock = jest.fn();
 
   const props = {
     gallery: {
@@ -17,7 +18,8 @@ describe('<GalleryComponent />', () => {
       }
     },
     getGallery: getGalleryMock,
-    setSelectedThumbnail: setSelectedThumbnailMock
+    setSelectedThumbnail: setSelectedThumbnailMock,
+    setSelectedThumbnailImage: setSelectedThumbnailImageMock
   };
 
   it('renders the Gallery Component', () => {
