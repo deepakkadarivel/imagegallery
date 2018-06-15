@@ -11,7 +11,6 @@ describe('<Thumbnail />', () => {
       type: 'primary',
       imageUrl: 'http://testimageurl.png',
       title: 'image title',
-      description: 'image description',
       onClick: onClickMock
     };
 
@@ -30,11 +29,7 @@ describe('<Thumbnail />', () => {
     const container = component.find('.container');
     expect(container.length).toBeTruthy();
 
-    expect(container.find('h4').length).toBeTruthy();
-    expect(container.find('b').length).toBeTruthy();
-    expect(container.find('b').props().children).toBe(props.title);
-
     expect(container.find('p').length).toBeTruthy();
-    expect(container.find('p').props().children).toBe(props.description);
+    expect(container.find('p').props().children).toBe(props.title);
   });
 });

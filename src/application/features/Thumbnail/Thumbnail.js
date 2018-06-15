@@ -8,21 +8,17 @@ const Thumbnail = props => {
 
   return (
     <div className="thumbnail" onClick={onClick}>
-      <img src={imageUrl} alt={title} style="width:100%" />
+      <img src={imageUrl} alt={title} />
       <div className="container">
-        <h4>
-          <b>{title}</b>
-        </h4>
-        <p>{description}</p>
+        <p>{title}</p>
       </div>
     </div>
   );
 };
 
 Thumbnail.propTypes = {
-  imageUrl: PropTypes.string,
-  title: PropTypes.string,
-  description: PropTypes.string,
+  imageUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   onClick: PropTypes.func
 };
 
