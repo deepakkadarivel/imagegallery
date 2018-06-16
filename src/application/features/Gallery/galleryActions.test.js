@@ -9,6 +9,7 @@ import {
 } from './galleryActions';
 import axios from 'axios';
 import apiSettings from '../../shared/settings/apiSettings';
+import filterInitialState from '../FilterModal/filterInitialState';
 
 let state, store;
 
@@ -17,16 +18,17 @@ describe('getGallery', () => {
   const mockStore = configureMockStore(middleWares);
   beforeEach(() => {
     state = {
-      gallery: galleryInitialState
+      gallery: galleryInitialState,
+      filter: filterInitialState
     };
     store = mockStore(state);
   });
 
   it('make getGallery api call', () => {
-    spyOn(axios, 'get').and.returnValue(Promise.resolve({ data: [] }));
+    spyOn(axios, 'post').and.returnValue(Promise.resolve({ data: [] }));
     const galleryUrl = apiSettings.endpoints.gallery.generateGalleryUrl();
     store.dispatch(getGallery());
-    expect(axios.get).toHaveBeenCalledWith(galleryUrl);
+    expect(axios.post).toHaveBeenCalledWith(galleryUrl, filterInitialState);
     expect(galleryUrl.endsWith('gallery')).toEqual(true);
   });
 
@@ -54,7 +56,7 @@ describe('getGallery', () => {
         thumbnails: mockGalleryData.data
       }
     ];
-    spyOn(axios, 'get').and.returnValue(
+    spyOn(axios, 'post').and.returnValue(
       Promise.resolve({ data: mockGalleryData })
     );
     store.dispatch(getGallery()).then(() => {
@@ -66,7 +68,7 @@ describe('getGallery', () => {
   it(`dispatches ${
     galleryActionTypes.GET_GALLERY.rejected
   } action if the response is failed`, done => {
-    spyOn(axios, 'get').and.returnValue(Promise.reject());
+    spyOn(axios, 'post').and.returnValue(Promise.reject());
     const expectedActions = [
       {
         type: galleryActionTypes.GET_GALLERY.pending
@@ -76,7 +78,7 @@ describe('getGallery', () => {
       }
     ];
     store.dispatch(getGallery()).then(() => {
-      expect(axios.get).toHaveBeenCalled();
+      expect(axios.post).toHaveBeenCalled();
       expect(store.getActions()).toEqual(expectedActions);
       done();
     });

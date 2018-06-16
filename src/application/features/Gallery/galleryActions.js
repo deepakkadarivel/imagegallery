@@ -46,8 +46,15 @@ const getGallery = () => {
     const galleryUrl = apiSettings.endpoints.gallery.generateGalleryUrl();
     dispatch(galleryPending());
 
+    let payload = {
+      sectionFilter: getState().filter.sectionFilter,
+      sortFilter: getState().filter.sortFilter,
+      windowFilter: getState().filter.windowFilter,
+      viralFilter: getState().filter.viralFilter
+    };
+
     return axios
-      .get(galleryUrl)
+      .post(galleryUrl, payload)
       .then(response => {
         dispatch(galleryFulfilled());
         let thumbnails = response.data ? response.data.data : [];
