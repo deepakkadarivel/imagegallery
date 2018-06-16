@@ -6,8 +6,47 @@
 
 .detail-card {
   transition: 0.3s;
-  width: 50%;
+  width: 30%;
   border-radius: 4px;
   background: #fefefe;
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.container p {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+
+#upvote {
+  display: block;
+  height: 24px;
+  width: 24px;
+  margin-right: 10px;
+  background-image: url(../../assets/upvote.svg);
+  background-size: 24px 24px;
+}
+
+#downvote {
+  display: block;
+  height: 24px;
+  width: 24px;
+  margin: 0 10px 0 20px;
+  background-image: url(../../assets/downvote.svg);
+  background-size: 24px 24px;
+}
+
+#score {
+  display: block;
+  height: 24px;
+  width: 24px;
+  margin: 0 10px 0 20px;
+  background-image: url(../../assets/score.svg);
+  background-size: 24px 24px;
 }
