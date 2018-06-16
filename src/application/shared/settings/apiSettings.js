@@ -1,4 +1,4 @@
-const baseUrl = 'https://image-search-microservice-eeaiwupofb.now.sh';
+const baseUrl = 'https://image-search-microservice-emxctmkmwx.now.sh';
 
 const apiSettings = {
   baseUrl,
