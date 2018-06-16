@@ -1,4 +1,4 @@
-const baseUrl = 'https://image-search-microservice-emxctmkmwx.now.sh';
+const baseUrl = 'http://localhost:5000';
 
 const apiSettings = {
   baseUrl,
