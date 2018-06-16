@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8080';
+const baseUrl = 'https://image-search-microservice-eeaiwupofb.now.sh';
 
 const apiSettings = {
   baseUrl,

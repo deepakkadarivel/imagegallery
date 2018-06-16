@@ -95,6 +95,15 @@ describe('<GalleryComponent />', () => {
 
       let thumbnailComponent = masonryComponent.find('Thumbnail');
       expect(thumbnailComponent.length).toBe(3);
+
+      expect(thumbnailComponent.at(0).props().imageUrl).toBe('sample link');
+      expect(thumbnailComponent.at(0).props().title).toBe('image one');
+      thumbnailComponent
+        .at(0)
+        .props()
+        .onClick();
+      expect(setSelectedThumbnailMock).toHaveBeenCalled();
+      expect(setSelectedThumbnailImageMock).toHaveBeenCalled();
     });
   });
 });

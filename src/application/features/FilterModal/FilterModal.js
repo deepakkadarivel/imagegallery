@@ -47,7 +47,7 @@ class FilterModal extends Component {
 
   render() {
     return (
-      <div id="myModal" className="modal">
+      <div className="FilterModal">
         <div className="modal-content">
           <div className="modal-header">
             <h4>Filter Gallery</h4>
