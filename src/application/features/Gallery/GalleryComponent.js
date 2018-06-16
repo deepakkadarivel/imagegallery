@@ -4,6 +4,7 @@ import Masonry from 'react-masonry-css';
 import Loader from '../Loader/Loader';
 import './gallery.css';
 import Thumbnail from '../Thumbnail/Thumbnail';
+import FilterModalContainer from '../FilterModal/FilterModalContainer';
 
 class GalleryComponent extends Component {
   constructor(props) {
@@ -79,6 +80,7 @@ class GalleryComponent extends Component {
     return (
       <div className="GalleryComponent">
         {this.props.gallery.promise.getGallery.isPending && <Loader />}
+        {this.props.isFilterModalVisible && <FilterModalContainer />}
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"
@@ -95,7 +97,8 @@ GalleryComponent.propTypes = {
   gallery: PropTypes.object,
   getGallery: PropTypes.func,
   setSelectedThumbnail: PropTypes.func,
-  setSelectedThumbnailImage: PropTypes.func
+  setSelectedThumbnailImage: PropTypes.func,
+  isFilterModalVisible: PropTypes.bool
 };
 
 export default GalleryComponent;

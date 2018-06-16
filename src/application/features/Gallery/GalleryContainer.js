@@ -8,7 +8,8 @@ import {
 
 const mapStateToProps = state => {
   return {
-    gallery: state.gallery
+    gallery: state.gallery,
+    isFilterModalVisible: state.navbar.isFilterModalVisible
   };
 };
 

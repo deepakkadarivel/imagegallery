@@ -18,6 +18,9 @@ describe('<GalleryContainer />', () => {
       promise: {
         getGallery: setPromiseState()
       }
+    },
+    navbar: {
+      isFilterModalVisible: false
     }
   };
   const store = configureMockStore()(state);
@@ -62,6 +65,9 @@ describe('<GalleryContainer />', () => {
   describe('mapStateToProps', () => {
     it('sets the thumbnails prop', () => {
       expect(componentProps.gallery).toEqual(state.gallery);
+      expect(componentProps.isFilterModalVisible).toEqual(
+        state.navbar.isFilterModalVisible
+      );
     });
   });
 
