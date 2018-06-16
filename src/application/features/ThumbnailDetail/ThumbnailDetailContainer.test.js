@@ -3,9 +3,9 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 
-jest.mock('./ThumbnailDetailComponent');
+jest.mock('./ThumbnailDetail');
 
-import ThumbnailDetailComponent from './ThumbnailDetailComponent';
+import ThumbnailDetailComponent from './ThumbnailDetail';
 import ThumbnailDetailContainer from './ThumbnailDetailContainer';
 import setPromiseState from '../../shared/utilities/promiseState';
 
@@ -42,7 +42,7 @@ describe('<ThumbnailDetailContainer />', () => {
     );
 
     container = wrapper.find(ThumbnailDetailContainer);
-    component = wrapper.find('ThumbnailDetailComponent');
+    component = wrapper.find('ThumbnailDetail');
     componentProps = component.props();
   });
 

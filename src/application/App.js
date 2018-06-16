@@ -4,8 +4,8 @@ import GalleryContainer from './features/Gallery/GalleryContainer';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from '../appStore';
-import NavBarComponent from './features/NavBar/NavBarComponent';
 import ThumbnailDetailContainer from './features/ThumbnailDetail/ThumbnailDetailContainer';
+import NavBarContainer from './features/NavBar/NavBarContainer';
 
 const store = configureStore();
 
@@ -15,7 +15,7 @@ class App extends Component {
       <BrowserRouter>
         <Provider store={store}>
           <div className="App">
-            <NavBarComponent />
+            <NavBarContainer />
             <Switch>
               <Route exact path="/" component={GalleryContainer} />
               <Route

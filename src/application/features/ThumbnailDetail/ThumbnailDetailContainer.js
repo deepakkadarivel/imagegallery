@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ThumbnailDetailComponent from './ThumbnailDetailComponent';
+import ThumbnailDetail from './ThumbnailDetail';
 
 const mapStateToProps = state => {
   return {
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ThumbnailDetailComponent);
+)(ThumbnailDetail);

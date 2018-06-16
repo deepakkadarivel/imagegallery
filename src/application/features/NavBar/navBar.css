@@ -1,4 +1,4 @@
-.NavBarComponent {
+.NavBar {
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -6,10 +6,27 @@
 }
 
 .App-header {
-  color: white;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 60px;
   padding: 0 100px;
   background-color: #ffffff;
   border-bottom: 1px solid #eaeaeb;
+}
+
+#filter {
+  display: block;
+  height: 24px;
+  width: 24px;
+  margin: 0 10px 0 20px;
+  background-image: url(../../assets/filter.svg);
+  background-size: 24px 24px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .App-header {
+    padding: 0 10px;
+  }
 }

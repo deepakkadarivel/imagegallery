@@ -1,21 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ThumbnailDetailComponent from './ThumbnailDetailComponent';
-import setPromiseState from '../../shared/utilities/promiseState';
+import ThumbnailDetail from './ThumbnailDetail';
 
-describe('<ThumbnailDetailComponent />', () => {
+describe('<ThumbnailDetail />', () => {
   const props = {
-    selectedThumbnail: { images: [] }
+    selectedThumbnail: { images: [] },
+    selectedThumbnailImage: ''
   };
 
   it('renders the ThumbnailDetail Component', () => {
-    const component = shallow(<ThumbnailDetailComponent {...props} />);
+    const component = shallow(<ThumbnailDetail {...props} />);
     expect(component.hasClass('thumbnail-detail')).toBeTruthy();
   });
 
   it('renders the details if selectedThumbnailImage prop exists', () => {
-    const component = shallow(<ThumbnailDetailComponent {...props} />);
+    const component = shallow(<ThumbnailDetail {...props} />);
     expect(component.hasClass('thumbnail-detail')).toBeTruthy();
 
     component.setProps({
@@ -52,7 +52,7 @@ describe('<ThumbnailDetailComponent />', () => {
   });
 
   it('renders no content message if selectedThumbnailImage prop does not exists', () => {
-    const component = shallow(<ThumbnailDetailComponent {...props} />);
+    const component = shallow(<ThumbnailDetail {...props} />);
     expect(component.hasClass('thumbnail-detail')).toBeTruthy();
 
     const message = component.find('div').last();
