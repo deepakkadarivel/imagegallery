@@ -81,13 +81,15 @@ class GalleryComponent extends Component {
       <div className="GalleryComponent">
         {this.props.gallery.promise.getGallery.isPending && <Loader />}
         {this.props.isFilterModalVisible && <FilterModalContainer />}
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column"
-        >
-          {this.renderGallery()}
-        </Masonry>
+        {!this.props.gallery.promise.getGallery.isPending && (
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
+            {this.renderGallery()}
+          </Masonry>
+        )}
       </div>
     );
   }

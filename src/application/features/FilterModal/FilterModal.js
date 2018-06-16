@@ -5,29 +5,29 @@ import RadioInput from '../RadioInput/RadioInput';
 import filterModel from './filterDataModel';
 
 class FilterModal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sectionFilter: 'hot',
-      sortFilter: 'viral',
-      windowFilter: 'day'
-    };
-  }
-
   applyFiler() {
     this.props.toggleFilterModal();
-  }
-
-  onSectionChanged(e) {
-    this.setState({
-      section: e.currentTarget.value
-    });
+    this.props.getGallery();
   }
 
   setSelectedRadioValue(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    switch (e.target.name) {
+      case 'sectionFilter':
+        this.props.setSection(e.target.value);
+        break;
+      case 'sortFilter':
+        this.props.setSort(e.target.value);
+        break;
+      case 'windowFilter':
+        this.props.setWindow(e.target.value);
+        break;
+      default:
+        break;
+    }
+  }
+
+  setSelectedCheckboxValue(e) {
+    this.props.setViral(e.target.checked);
   }
 
   renderRadioInputs(model) {
@@ -38,7 +38,7 @@ class FilterModal extends Component {
           name={item.group}
           value={item.value}
           label={item.label}
-          checkedValue={this.state[item.group]}
+          checkedValue={this.props[item.group]}
           onChange={e => this.setSelectedRadioValue(e)}
         />
       );
@@ -65,7 +65,11 @@ class FilterModal extends Component {
                 <tr>
                   <th>Include Viral</th>
                   <td>
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      checked={this.props.viralFilter}
+                      onChange={e => this.setSelectedCheckboxValue(e)}
+                    />
                   </td>
                 </tr>
                 <tr>
@@ -94,7 +98,16 @@ class FilterModal extends Component {
 
 FilterModal.propTypes = {
   isFilterModalVisible: PropTypes.bool,
-  toggleFilterModal: PropTypes.func
+  getGallery: PropTypes.func,
+  toggleFilterModal: PropTypes.func,
+  setSection: PropTypes.func,
+  setSort: PropTypes.func,
+  setViral: PropTypes.func,
+  setWindow: PropTypes.func,
+  sectionFilter: PropTypes.string,
+  sortFilter: PropTypes.string,
+  windowFilter: PropTypes.string,
+  viralFilter: PropTypes.bool
 };
 
 export default FilterModal;
